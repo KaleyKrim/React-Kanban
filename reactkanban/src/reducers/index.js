@@ -1,6 +1,6 @@
 import { LOAD_CARDS, ADD_CARD } from '../actions/cards';
 
-const initialState = [ {id:1, title: 'Study Redux'} ];
+const initialState = [ {id:1, title: 'Study Redux'}, {id:2, title: 'Sleep'} ];
 
 const reducers = (state = initialState, action) => {
   switch(action.type){

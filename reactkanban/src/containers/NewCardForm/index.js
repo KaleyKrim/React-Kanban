@@ -22,9 +22,15 @@ class NewCardForm extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    let newCard = this.state;
+    let newCard = {
+      title: this.state.title
+    };
 
     this.props.addCard(newCard);
+
+    this.setState({
+      title: ''
+    })
 
   }
 

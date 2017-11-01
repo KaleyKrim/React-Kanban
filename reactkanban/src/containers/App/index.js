@@ -35,6 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <KanbanBoard cards={ this.props.cards } />
+        <NewCardForm />
       </div>
     );
   }
