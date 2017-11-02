@@ -2,22 +2,14 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('priorities', [{
-      title: 'High',
+        return queryInterface.bulkInsert('cards', [{
+      title: 'Study React',
       createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      title: 'Medium',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      title: 'Low',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      priority: 1,
+      status: 1,
+      assigned_to: 1
     }], {});
-
   },
 
   down: (queryInterface, Sequelize) => {

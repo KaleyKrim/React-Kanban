@@ -35,6 +35,6 @@ app.post('/api/cards', (req, res) => {
 });
 
 app.listen(port, () => {
-  db.sequelize.sync({ force: true });
+  db.sequelize.sync({ force: false });
   console.log('Server listening on :', port);
 });

@@ -1,10 +1,18 @@
+const axios = require('axios');
+
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
 
-export const loadCards = (cards) => {
-  return {
-    type: LOAD_CARDS,
-    cards: cards
+export const loadCards = () => {
+  return function(dispatch){
+    return axios.get('/api/cards')
+    .then( cards => {
+      console.log(cards);
+      dispatch({
+        type: LOAD_CARDS,
+        cards: cards.data
+      });
+    });
   }
 }
 
