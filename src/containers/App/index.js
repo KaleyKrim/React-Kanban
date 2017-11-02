@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css';
 import { connect } from 'react-redux';
 import { loadCards } from '../../actions/cards';
-import { addCard } from '../../actions/cards';
 
 import KanbanBoard from '../KanbanBoard';
 import NewCardForm from '../NewCardForm';
