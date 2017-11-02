@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import { connect } from 'react-redux';
 import { loadCards } from '../../actions/cards';
+import { loadUsers } from '../../actions/users';
 
 import KanbanBoard from '../KanbanBoard';
 import NewCardForm from '../NewCardForm';
@@ -18,13 +19,13 @@ class App extends Component {
 
   componentWillMount(){
 
+    this.props.loadUsers();
+
   }
 
 
   componentDidMount(){
     console.log('componentMounted');
-    console.log('this.props', this.props);
-
 
     this.props.loadCards();
 
@@ -42,7 +43,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards
+    cards: state.cards,
+    users: state.users
   }
 }
 
@@ -50,6 +52,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadCards: () => {
       dispatch(loadCards())
+    },
+    loadUsers: () => {
+      dispatch(loadUsers())
     }
   }
 }

@@ -22,6 +22,13 @@ app.get('/api/cards', (req, res) => {
   })
 });
 
+app.get('/api/users', (req, res) => {
+  return User.findAll()
+  .then(users => {
+    return res.json(users);
+  })
+});
+
 app.post('/api/cards', (req, res) => {
 
   console.log(req.body);

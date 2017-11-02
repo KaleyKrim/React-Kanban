@@ -8,7 +8,7 @@ export const loadUsers = () => {
     .then( users => {
       dispatch({
         type: LOAD_USERS,
-        cards: users.data
+        users: users.data
       });
     });
   }
