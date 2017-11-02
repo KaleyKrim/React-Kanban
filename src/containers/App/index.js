@@ -42,7 +42,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state
+    cards: state.cards
   }
 }
 

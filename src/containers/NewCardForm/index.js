@@ -63,6 +63,12 @@ class NewCardForm extends Component {
             <option value="3">Low</option>
           </select>
 
+          <select name="user" onChange={this.handleChangeAssigned.bind(this)}>
+            <option value="1">High</option>
+            <option value="2">Medium</option>
+            <option value="3">Low</option>
+          </select>
+
           <input type="text" value={this.state.assignedTo} placeholder="assigned_to" onChange={this.handleChangeAssigned.bind(this)}/>
           <input type="submit" value="add task"/>
         </form>
