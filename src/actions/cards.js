@@ -7,7 +7,6 @@ export const loadCards = () => {
   return function(dispatch){
     return axios.get('/api/cards')
     .then( cards => {
-      console.log(cards);
       dispatch({
         type: LOAD_CARDS,
         cards: cards.data
@@ -16,9 +15,15 @@ export const loadCards = () => {
   }
 }
 
-export const addCard = (card) => {
-  return {
-    type: ADD_CARD,
-    card: card
+export const addCard = (newCard) => {
+  return function(dispatch){
+    return axios.post('/api/cards', newCard)
+    .then( card => {
+      console.log(card);
+      dispatch({
+        type: ADD_CARD,
+        card: card.data
+      });
+    });
   }
 }

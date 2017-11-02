@@ -23,6 +23,9 @@ app.get('/api/cards', (req, res) => {
 });
 
 app.post('/api/cards', (req, res) => {
+
+  console.log(req.body);
+
   let title = req.body.title;
   let priority = req.body.priority;
   let status = 1;
