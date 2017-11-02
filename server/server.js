@@ -22,16 +22,16 @@ app.get('/api/cards', (req, res) => {
   })
 });
 
-app.get('/api/users', (req, res) => {
-  return User.findAll()
-  .then(users => {
-    return res.json(users);
-  })
+app.get('/api/card/:id', (req, res) => {
+  let cardId = req.params.id;
+
+  return Card.findById(cardId)
+  .then(card => {
+    return res.json(card);
+  });
 });
 
 app.post('/api/cards', (req, res) => {
-
-  console.log(req.body);
 
   let title = req.body.title;
   let priority = req.body.priority;
@@ -43,6 +43,14 @@ app.post('/api/cards', (req, res) => {
     return res.json(newCard);
   });
 });
+
+app.get('/api/users', (req, res) => {
+  return User.findAll()
+  .then(users => {
+    return res.json(users);
+  })
+});
+
 
 app.listen(port, () => {
   db.sequelize.sync({ force: false });

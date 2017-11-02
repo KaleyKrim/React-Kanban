@@ -28,7 +28,6 @@ class NewCardForm extends Component {
   }
 
   handleChangeAssigned(event){
-    console.log(this.props.users);
     this.setState({
       assignedTo: event.target.value
     })
@@ -39,17 +38,15 @@ class NewCardForm extends Component {
 
     let newCard = {
       title: this.state.title,
-      priority: this.state.priority || 3,
-      assignedTo: this.state.assignedTo
+      priority: this.state.priority || 1,
+      assignedTo: this.state.assignedTo || 1
     };
 
     this.props.addCard(newCard);
 
-    // this.setState({
-    //   title: '',
-    //   priority: '',
-    //   assignedTo: ''
-    // })
+    this.setState({
+      title: ''
+    })
 
   }
 
@@ -58,6 +55,7 @@ class NewCardForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle.bind(this)}/>
+
           <select name="priority" onChange={this.handleChangePriority.bind(this)}>
             <option value="1">High</option>
             <option value="2">Medium</option>
@@ -74,17 +72,12 @@ class NewCardForm extends Component {
             }
           </select>
 
-
-
-          <input type="text" value={this.state.assignedTo} placeholder="assigned_to" onChange={this.handleChangeAssigned.bind(this)}/>
           <input type="submit" value="add task"/>
         </form>
       </div>
     )
   }
 }
-
-///// <input type="text" value={this.state.priority} placeholder="priority" onChange={this.handleChangePriority.bind(this)}/>
 
 const mapStateToProps = (state) => {
   return {

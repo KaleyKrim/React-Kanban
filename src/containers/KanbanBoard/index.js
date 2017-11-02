@@ -1,16 +1,13 @@
 import React from 'react';
-import Card from '../../components/Card';
+import ToDo from '../ToDo';
+// import Doing from '../Doing';
+// import Done from '../Done';
 
 const KanbanBoard = ( { cards } ) => {
   return (
     <div>
-      {
-        cards.map((card) => {
-          return(
-            <Card title={card.title} />
-          );
-        })
-      }
+      <ToDo />
+
     </div>
 
 

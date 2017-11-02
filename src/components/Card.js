@@ -1,11 +1,14 @@
 import React from 'react';
 
-const Card = ( { title } ) => {
+const Card = ( { title, assigned_to, priority } ) => {
   return (
-    <div>
-      <ul>
-        <li>{ title }</li>
-      </ul>
+    <div class="card">
+      <br />
+      { title }
+      <br />
+      Assigned to: { assigned_to }
+      <br />
+      Priority: { priority }
     </div>
   )
 }
