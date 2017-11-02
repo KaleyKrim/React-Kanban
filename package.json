@@ -1,9 +1,8 @@
 {
-  "name": "reactkanban",
+  "name": "React-Kanban",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
@@ -12,7 +11,8 @@
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.16",
     "redux": "^3.7.2",
-    "sequelize": "^4.20.3"
+    "sequelize": "^4.20.3",
+    "sequelize-cli": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
