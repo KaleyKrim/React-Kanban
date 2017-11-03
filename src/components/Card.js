@@ -9,8 +9,6 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      id: this.props.id,
-      status: ''
     }
   }
 
@@ -18,7 +16,7 @@ class Card extends Component {
 
     event.preventDefault();
     let newInfo = {
-      id: this.state.id,
+      id: this.props.id,
       status: this.props.nextStatus
     };
     this.props.editCard(newInfo);
@@ -28,7 +26,7 @@ class Card extends Component {
 
     event.preventDefault();
     let newInfo = {
-      id: this.state.id,
+      id: this.props.id,
       status: this.props.prevStatus
     };
     this.props.editCard(newInfo);

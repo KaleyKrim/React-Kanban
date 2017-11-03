@@ -51,7 +51,7 @@ class NewCardForm extends Component {
 
   render(){
     return (
-      <div>
+      <div id="new-card-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle.bind(this)}/>
 
