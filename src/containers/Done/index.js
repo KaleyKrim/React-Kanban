@@ -19,7 +19,7 @@ class Done extends Component {
             return card.status === 3
           }).map((card) => {
             return(
-              <Card title={card.title} assigned_to={card.assigned_to} priority={card.priority}/>
+              <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {2} prevStatusPhrase={"Nvm, I'm still working on this."} nextStatus={1} nextStatusPhrase={"Actually, nvm. Put this back to 'To Do'."}/>
             );
           })
         }

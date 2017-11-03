@@ -19,7 +19,7 @@ class ToDo extends Component {
             return card.status === 1
           }).map((card) => {
             return(
-              <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority}/>
+              <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {3} prevStatusPhrase={"Finished!! Yes!!"} nextStatus={2} nextStatusPhrase={"Begin Task"}/>
             );
           })
         }

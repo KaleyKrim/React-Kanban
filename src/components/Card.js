@@ -9,30 +9,38 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      id: '',
+      id: this.props.id,
       status: ''
     }
   }
 
-  handleChangeStatus(event){
-    console.log(event.target.value);
-    this.setState({
-      id: this.props.id,
-      status: event.target.value
-    })
-  }
+  makeProgress(event){
 
-  handleSubmit(event){
     event.preventDefault();
-
     let newInfo = {
       id: this.state.id,
-      status: this.state.status
+      status: this.props.nextStatus
     };
-
     this.props.editCard(newInfo);
-
   }
+
+  backToPrevious(event){
+
+    event.preventDefault();
+    let newInfo = {
+      id: this.state.id,
+      status: this.props.prevStatus
+    };
+    this.props.editCard(newInfo);
+  }
+
+  // handleChangeStatus(event){
+  //   console.log(event.target.value);
+  //   this.setState({
+  //     id: this.props.id,
+  //     status: event.target.value
+  //   })
+  // }
 
 
 
@@ -45,9 +53,11 @@ class Card extends Component {
         Assigned to: { this.props.assigned_to }
         <br />
         Priority: { this.props.priority }
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" value={this.state.status} placeholder="status" onChange={this.handleChangeStatus.bind(this)}/>
-           <input type="submit" value="edit task"/>
+        <form onSubmit={this.makeProgress.bind(this)}>
+           <input type="submit" value={ this.props.nextStatusPhrase }/>
+        </form>
+        <form onSubmit={this.backToPrevious.bind(this)}>
+           <input type="submit" value={ this.props.prevStatusPhrase }/>
         </form>
       </div>
     )
