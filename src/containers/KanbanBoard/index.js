@@ -1,16 +1,15 @@
 import React from 'react';
 import ToDo from '../ToDo';
-// import Doing from '../Doing';
-// import Done from '../Done';
+import Doing from '../Doing';
+import Done from '../Done';
 
-const KanbanBoard = ( { cards } ) => {
+const KanbanBoard = () => {
   return (
-    <div>
+    <div id="main-board">
       <ToDo />
-
+      <Doing />
+      <Done />
     </div>
-
-
   );
 }
 

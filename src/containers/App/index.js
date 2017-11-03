@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <KanbanBoard cards={ this.props.cards } users={ this.props.users }/>
+        <KanbanBoard />
         <NewCardForm />
       </div>
     );

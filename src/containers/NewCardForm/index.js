@@ -47,7 +47,6 @@ class NewCardForm extends Component {
     this.setState({
       title: ''
     })
-
   }
 
   render(){

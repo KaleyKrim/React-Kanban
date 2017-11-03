@@ -31,6 +31,24 @@ app.get('/api/card/:id', (req, res) => {
   });
 });
 
+app.put('/api/card/:id', (req, res) => {
+  let newInfo = req.body;
+  let cardId = req.params.id;
+
+  return Card.findById(cardId)
+  .then(card => {
+    return Card.update(newInfo, {
+      where: [{id: cardId}]
+    })
+    .then(card => {
+      return Card.findAll()
+      .then(cards => {
+        return res.json(cards);
+      })
+    })
+  })
+});
+
 app.post('/api/cards', (req, res) => {
 
   let title = req.body.title;

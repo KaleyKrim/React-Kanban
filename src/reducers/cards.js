@@ -1,4 +1,4 @@
-import { LOAD_CARDS, ADD_CARD } from '../actions/cards';
+import { LOAD_CARDS, ADD_CARD, EDIT_CARD } from '../actions/cards';
 
 const initialState = [ ];
 
@@ -8,6 +8,8 @@ const cards = (state = initialState, action) => {
       return [ ...action.cards ];
     case ADD_CARD:
       return [ ...state, action.card ];
+    case EDIT_CARD:
+      return [ ...action.cards ];
     default:
       return state
   }
