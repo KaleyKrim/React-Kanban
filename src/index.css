@@ -16,6 +16,18 @@ body {
   width: 300px;
 }
 
+#to-do .card{
+  background-color: #ffb3ec;
+}
+
+#doing .card{
+  background-color: #ccb3ff;
+}
+
+#done .card{
+  background-color: #b3b3ff;
+}
+
 
 #new-card-form{
   margin-top: 5%;
@@ -24,16 +36,4 @@ body {
 .card{
   padding: 2%;
   margin: 5%;
-}
-
-#to-do .card{
-  background-color: #cce6ff;
-}
-
-#doing .card{
-  background-color: #ffffcc;
-}
-
-#done .card{
-  background-color: #ffcce6;
 }
