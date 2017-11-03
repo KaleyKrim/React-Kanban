@@ -8,6 +8,7 @@ const port = process.env.port || 8080;
 const User = db.user;
 const Card = db.card;
 const Status = db.status;
+const Priority = db.priority;
 
 app.use(bodyParser.json());
 
@@ -65,6 +66,14 @@ app.get('/api/users', (req, res) => {
   return User.findAll()
   .then(users => {
     return res.json(users);
+  })
+});
+
+app.get('/api/priorities', (req, res) => {
+  return Priority.findAll()
+  .then(priorities => {
+    console.log(priorities);
+    return res.json(priorities);
   })
 });
 

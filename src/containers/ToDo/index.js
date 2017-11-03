@@ -21,6 +21,17 @@ class ToDo extends Component {
     return username;
   }
 
+  findPriority(card){
+    console.log(this.props);
+    let priorityName = '';
+    this.props.priorities.forEach((priority) => {
+      if (priority.id === card.priority){
+        priorityName = priority.title;
+      }
+    });
+    return priorityName;
+  }
+
   render(){
     return (
       <div>
@@ -33,7 +44,7 @@ class ToDo extends Component {
               return card.status === 1
             }).map((card) => {
               return(
-                <Card id={card.id} title={card.title} assigned_to={this.findAssignedTo(card)} priority={card.priority} prevStatus = {3} prevStatusPhrase={"Finished!! Yes!!"} nextStatus={2} nextStatusPhrase={"Begin Task"}/>
+                <Card id={card.id} title={card.title} assigned_to={this.findAssignedTo(card)} priority={this.findPriority(card)} prevStatus = {3} prevStatusPhrase={"Finished!! Yes!!"} nextStatus={2} nextStatusPhrase={"Begin Task"}/>
               );
             })
           }
@@ -46,7 +57,8 @@ class ToDo extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cards,
-    users: state.users
+    users: state.users,
+    priorities: state.priorities
   }
 }
 

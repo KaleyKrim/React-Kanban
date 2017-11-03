@@ -3,6 +3,7 @@ import './index.css';
 import { connect } from 'react-redux';
 import { loadCards } from '../../actions/cards';
 import { loadUsers } from '../../actions/users';
+import { loadPriorities } from '../../actions/priorities';
 
 import KanbanBoard from '../KanbanBoard';
 import NewCardForm from '../NewCardForm';
@@ -21,6 +22,7 @@ class App extends Component {
   componentWillMount(){
 
     this.props.loadUsers();
+    this.props.loadPriorities();
 
   }
 
@@ -43,12 +45,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    cards: state.cards,
-    users: state.users
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     users: state.users,
+//     cards: state.cards,
+//     priorities: state.priorities
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -57,12 +60,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadUsers: () => {
       dispatch(loadUsers())
+    },
+    loadPriorities: () => {
+      dispatch(loadPriorities())
     }
   }
 }
 
 const ConnectedApp = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(App)
 
