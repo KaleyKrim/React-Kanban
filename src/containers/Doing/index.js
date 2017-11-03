@@ -13,7 +13,11 @@ class Doing extends Component {
 
   render(){
     return (
-      <div id="doing">
+      <div>
+        <h2>
+          Doing
+        </h2>
+        <div id="doing">
         {
           this.props.cards.filter((card) => {
             return card.status === 2
@@ -23,6 +27,7 @@ class Doing extends Component {
             );
           })
         }
+        </div>
       </div>
     )
   }

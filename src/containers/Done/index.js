@@ -13,17 +13,23 @@ class Done extends Component {
 
   render(){
     return (
-      <div id="done">
-        {
-          this.props.cards.filter((card) => {
-            return card.status === 3
-          }).map((card) => {
-            return(
-              <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {2} prevStatusPhrase={"Wait!! I want to keep working on this."} nextStatus={1} nextStatusPhrase={"Actually, nvm. Put this back on my to do list."}/>
-            );
-          })
-        }
+      <div>
+        <h2>
+          Done
+        </h2>
+        <div id="done">
+          {
+            this.props.cards.filter((card) => {
+              return card.status === 3
+            }).map((card) => {
+              return(
+                <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {2} prevStatusPhrase={"Wait!! I want to keep working on this."} nextStatus={1} nextStatusPhrase={"Actually, nvm. Put this back on my to do list."}/>
+              );
+            })
+          }
+        </div>
       </div>
+
     )
   }
 }

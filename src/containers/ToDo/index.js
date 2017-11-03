@@ -13,16 +13,21 @@ class ToDo extends Component {
 
   render(){
     return (
-      <div id="to-do">
-        {
-          this.props.cards.filter((card) => {
-            return card.status === 1
-          }).map((card) => {
-            return(
-              <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {3} prevStatusPhrase={"Finished!! Yes!!"} nextStatus={2} nextStatusPhrase={"Begin Task"}/>
-            );
-          })
-        }
+      <div>
+        <h2>
+          To Do
+        </h2>
+         <div id="to-do">
+          {
+            this.props.cards.filter((card) => {
+              return card.status === 1
+            }).map((card) => {
+              return(
+                <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {3} prevStatusPhrase={"Finished!! Yes!!"} nextStatus={2} nextStatusPhrase={"Begin Task"}/>
+              );
+            })
+          }
+        </div>
       </div>
     )
   }
