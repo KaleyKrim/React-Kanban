@@ -52,6 +52,9 @@ class NewCardForm extends Component {
   render(){
     return (
       <div id="new-card-form">
+        <h2>
+          Add New Task
+        </h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle.bind(this)}/>
 

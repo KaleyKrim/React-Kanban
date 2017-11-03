@@ -6,6 +6,7 @@ import { loadUsers } from '../../actions/users';
 
 import KanbanBoard from '../KanbanBoard';
 import NewCardForm from '../NewCardForm';
+import KanbanHeader from '../../components/KanbanHeader';
 
 class App extends Component {
 
@@ -34,6 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <KanbanHeader />
         <NewCardForm />
         <KanbanBoard />
       </div>
