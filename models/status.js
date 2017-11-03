@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes){
   status.associate = function(models){
 
     status.hasMany(models.card, {
-      foreignKey: 'status'
+      foreignKey: 'status', as: 'Cards'
     });
   };
   return status;

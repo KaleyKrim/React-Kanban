@@ -9,7 +9,20 @@ const cards = (state = initialState, action) => {
     case ADD_CARD:
       return [ ...state, action.card ];
     case EDIT_CARD:
-      return [ ...action.cards ];
+
+    console.log(state);
+
+    let index = state.findIndex((card) => {
+      return card.id === action.card[1].id
+    });
+
+      console.log('action.card', action.card[1]);
+      console.log('stateindex', state[index]);
+
+
+      console.log(index);
+
+      return [ ...(state.slice(0, index)), ...(state.slice((index + 1), state.length)), action.card[1]];
     default:
       return state
   }

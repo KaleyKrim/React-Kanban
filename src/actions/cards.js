@@ -32,10 +32,10 @@ export const addCard = (newCard) => {
 export const editCard = (newInfo) => {
   return function(dispatch){
     return axios.put(`/api/card/${newInfo.id}`, newInfo)
-    .then( cards => {
+    .then( card => {
       dispatch({
         type: EDIT_CARD,
-        cards: cards.data
+        card: card.data
       });
     });
   }

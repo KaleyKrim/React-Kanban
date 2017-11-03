@@ -14,8 +14,8 @@ body {
   border: black 1px solid;
   padding: 2%;
   width: 300px;
-  background-color: pink;
 }
+
 
 #new-card-form{
   margin-top: 5%;
@@ -23,7 +23,17 @@ body {
 
 .card{
   padding: 2%;
-  border: pink 1px solid;
   margin: 5%;
-  background-color: white;
+}
+
+#to-do .card{
+  background-color: #cce6ff;
+}
+
+#doing .card{
+  background-color: #ffffcc;
+}
+
+#done .card{
+  background-color: #ffcce6;
 }

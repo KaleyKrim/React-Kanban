@@ -5,9 +5,7 @@ module.exports = function(sequelize, DataTypes){
 
   user.associate = function(models){
     user.hasMany(models.card, {
-      foreignKey: {
-        name: 'assigned_to'
-      }
+      foreignKey: 'assigned_to', as: 'Tasks'
     });
   };
 

@@ -38,13 +38,12 @@ app.put('/api/card/:id', (req, res) => {
   return Card.findById(cardId)
   .then(card => {
     return Card.update(newInfo, {
-      where: [{id: cardId}]
+      where: [{id: cardId}],
+      returning: true,
+      plain: true
     })
     .then(card => {
-      return Card.findAll()
-      .then(cards => {
-        return res.json(cards);
-      })
+      return res.json(card);
     })
   })
 });
@@ -67,6 +66,15 @@ app.get('/api/users', (req, res) => {
   .then(users => {
     return res.json(users);
   })
+});
+
+app.post('/api/users', (req, res) => {
+  let name = req.body.name;
+
+  return User.create({ name: name })
+  .then(newUser => {
+    return res.json(newUser);
+  });
 });
 
 
