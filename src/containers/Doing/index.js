@@ -11,6 +11,16 @@ class Doing extends Component {
     }
   }
 
+  findAssignedTo(card){
+    let username = '';
+    this.props.users.forEach((user) => {
+      if (user.id === card.assigned_to){
+        username = user.name;
+      }
+    })
+    return username;
+  }
+
   render(){
     return (
       <div>
@@ -23,7 +33,7 @@ class Doing extends Component {
             return card.status === 2
           }).map((card) => {
             return(
-              <Card id={card.id} title={card.title} assigned_to={card.assigned_to} priority={card.priority} prevStatus = {1} prevStatusPhrase={"Nvm. Not in the mood to work on this anymore."} nextStatus={3} nextStatusPhrase={"Finished!"}/>
+              <Card id={card.id} title={card.title} assigned_to={this.findAssignedTo(card)} priority={card.priority} prevStatus = {1} prevStatusPhrase={"Nvm. Not in the mood to work on this anymore."} nextStatus={3} nextStatusPhrase={"Finished!"}/>
             );
           })
         }
@@ -35,7 +45,8 @@ class Doing extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards
+    cards: state.cards,
+    users: state.users
   }
 }
 
