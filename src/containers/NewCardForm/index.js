@@ -55,6 +55,7 @@ class NewCardForm extends Component {
         <h2>
           Add New Task
         </h2>
+
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle.bind(this)}/>
 
@@ -74,7 +75,7 @@ class NewCardForm extends Component {
             }
           </select>
 
-          <input type="submit" value="add task"/>
+          <input type="submit" value="Add Task"/>
         </form>
       </div>
     )

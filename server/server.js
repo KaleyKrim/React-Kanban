@@ -23,6 +23,19 @@ app.get('/api/cards', (req, res) => {
   })
 });
 
+app.post('/api/cards', (req, res) => {
+
+  let title = req.body.title;
+  let priority = req.body.priority;
+  let status = 1;
+  let assignedTo = req.body.assignedTo;
+
+  return Card.create({ title: title, priority: priority, status: status, assigned_to: assignedTo })
+  .then(newCard => {
+    return res.json(newCard);
+  });
+});
+
 app.get('/api/card/:id', (req, res) => {
   let cardId = req.params.id;
 
@@ -49,31 +62,25 @@ app.put('/api/card/:id', (req, res) => {
   })
 });
 
-app.post('/api/cards', (req, res) => {
+app.delete('/api/card/:id', (req, res) => {
+  let cardId = req.params.id;
 
-  let title = req.body.title;
-  let priority = req.body.priority;
-  let status = 1;
-  let assignedTo = req.body.assignedTo;
-
-  return Card.create({ title: title, priority: priority, status: status, assigned_to: assignedTo })
-  .then(newCard => {
-    return res.json(newCard);
-  });
+  return Card.findById(cardId)
+  .then(card => {
+    return Card.destroy({
+      where: [{id: cardId}],
+      force: true
+    })
+    .then(results => {
+      return res.json({"id" : cardId});
+    })
+  })
 });
 
 app.get('/api/users', (req, res) => {
   return User.findAll()
   .then(users => {
     return res.json(users);
-  })
-});
-
-app.get('/api/priorities', (req, res) => {
-  return Priority.findAll()
-  .then(priorities => {
-    console.log(priorities);
-    return res.json(priorities);
   })
 });
 
@@ -86,6 +93,13 @@ app.post('/api/users', (req, res) => {
   });
 });
 
+
+app.get('/api/priorities', (req, res) => {
+  return Priority.findAll()
+  .then(priorities => {
+    return res.json(priorities);
+  })
+});
 
 app.listen(port, () => {
   db.sequelize.sync({ force: false });

@@ -3,6 +3,7 @@ const axios = require('axios');
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
 
 export const loadCards = () => {
   return function(dispatch){
@@ -36,6 +37,18 @@ export const editCard = (newInfo) => {
       dispatch({
         type: EDIT_CARD,
         card: card.data
+      });
+    });
+  }
+}
+
+export const deleteCard = (cardToDelete) => {
+  return function(dispatch){
+    return axios.delete(`/api/card/${cardToDelete.id}`)
+    .then( response => {
+      dispatch({
+        type: DELETE_CARD,
+        cardData: response.data
       });
     });
   }

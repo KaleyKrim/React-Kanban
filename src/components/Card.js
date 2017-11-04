@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { editCard } from '../actions/cards.js';
+import { editCard, deleteCard } from '../actions/cards.js';
 
 class Card extends Component {
 
@@ -9,7 +9,7 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      classNames: 'card_' + this.props.priority_id
+
     }
   }
 
@@ -33,25 +33,35 @@ class Card extends Component {
     this.props.editCard(newInfo);
   }
 
-  // handleChangeStatus(event){
-  //   console.log(event.target.value);
-  //   this.setState({
-  //     id: this.props.id,
-  //     status: event.target.value
-  //   })
-  // }
+  handleDeleteCard(event){
+    event.preventDefault();
 
+    let card = {
+      id: this.props.id
+    }
+
+    this.props.deleteCard(card);
+  }
 
 
   render(){
     return (
-      <div className={ this.state.classNames }>
+      <div className={ 'card_' + this.props.priority_id }>
+        <form onSubmit={this.handleDeleteCard.bind(this)}>
+           <input type="Submit" value="X" />
+        </form>
+        <div className="card-title">
+          <br />
+          { this.props.title }
+        </div>
+
+        <div className="card-details">
+          <br />
+          Assigned to: { this.props.assigned_to }
+          <br />
+          Priority: { this.props.priority }
+        </div>
         <br />
-        { this.props.title }
-        <br />
-        Assigned to: { this.props.assigned_to }
-        <br />
-        Priority: { this.props.priority }
         <form onSubmit={this.makeProgress.bind(this)}>
            <input type="submit" value={ this.props.nextStatusPhrase }/>
         </form>
@@ -73,6 +83,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     editCard: (card) => {
       dispatch(editCard(card))
+    },
+    deleteCard: (card) => {
+      dispatch(deleteCard(card))
     }
   }
 }

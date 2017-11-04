@@ -2,6 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 16px;
+}
+
+.card-title{
+  font-size: 140%;
+}
+
+.card-details{
+  font-size: 90%;
 }
 
 #main-board{
@@ -13,7 +22,7 @@ body {
 #doing, #done, #to-do{
   border: black 1px solid;
   padding: 2%;
-  width: 300px;
+  width: 350px;
 }
 
 #to-do .card_1, #to-do .card_2, #to-do .card_3{
@@ -41,14 +50,14 @@ body {
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes flashColors {
   0% {background-color: #ccb3ff;}
-  50% {background-color: #884dff;}
+  50% {background-color: #aa80ff;}
   100% {background-color: #ccb3ff;}
 }
 
 /* Standard syntax */
 @keyframes flashColors {
   0% {background-color: #ccb3ff;}
-  50% {background-color: #884dff;}
+  50% {background-color: #aa80ff;}
   100% {background-color: #ccb3ff;}
 }
 
