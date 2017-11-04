@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { editCard, deleteCard } from '../actions/cards.js';
+import { editCard, deleteCard } from '../../actions/cards.js';
 
 class Card extends Component {
 

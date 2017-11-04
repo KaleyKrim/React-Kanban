@@ -5,9 +5,11 @@ import { loadCards } from '../../actions/cards';
 import { loadUsers } from '../../actions/users';
 import { loadPriorities } from '../../actions/priorities';
 
-import KanbanBoard from '../KanbanBoard';
-import NewCardForm from '../NewCardForm';
+import KanbanBoard from '../../components/KanbanBoard';
 import KanbanHeader from '../../components/KanbanHeader';
+
+import NewCardForm from '../NewCardForm';
+
 
 class App extends Component {
 
@@ -44,14 +46,6 @@ class App extends Component {
     );
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     users: state.users,
-//     cards: state.cards,
-//     priorities: state.priorities
-//   }
-// }
 
 const mapDispatchToProps = (dispatch) => {
   return {

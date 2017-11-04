@@ -1,7 +1,7 @@
 import React from 'react';
-import ToDo from '../ToDo';
-import Doing from '../Doing';
-import Done from '../Done';
+import ToDo from '../containers/ToDo';
+import Doing from '../containers/Doing';
+import Done from '../containers/Done';
 
 const KanbanBoard = () => {
   return (

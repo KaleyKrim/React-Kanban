@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from '../../components/Card';
+import Card from '../Card';
 
 class Done extends Component {
 
