@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CardDetails from '../../components/CardDetails.js';
-import EditForm from '../../components/EditForm.js';
+import EditForm from '../EditForm';
 
 import { editCard, deleteCard } from '../../actions/cards.js';
 
@@ -85,8 +85,10 @@ class Card extends Component {
           </form>
         </div>
 
-        { this.state.showEdit ? <EditForm /> : null }
-        { this.state.showEdit ? null : <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/> }
+        <div className="card-content">
+          { this.state.showEdit ? <EditForm id={this.props.id} title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority} /> : null }
+          { this.state.showEdit ? null : <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/> }
+        </div>
 
         <div className="progress-button">
           <form onSubmit={this.makeProgress.bind(this)}>

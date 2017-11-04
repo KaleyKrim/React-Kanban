@@ -47,6 +47,7 @@ app.get('/api/card/:id', (req, res) => {
 
 app.put('/api/card/:id', (req, res) => {
   let newInfo = req.body;
+  console.log(newInfo);
   let cardId = req.params.id;
 
   return Card.findById(cardId)
