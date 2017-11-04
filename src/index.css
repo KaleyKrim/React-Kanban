@@ -30,6 +30,14 @@ body {
   min-height: 600px;
 }
 
+#to-do .regress-button{
+  display: none;
+}
+
+#done .progress-button{
+  display: none;
+}
+
 #to-do .card_1, #to-do .card_2, #to-do .card_3{
   background-color: #ffb3ec;
 }
@@ -50,7 +58,7 @@ body {
 .card_1, .card_2, .card_3 {
   padding: 2%;
   margin: 5%;
-  max-height: 200px;
+  min-height: 155px;
 }
 
 /* Safari 4.0 - 8.0 */

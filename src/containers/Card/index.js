@@ -10,6 +10,7 @@ class Card extends Component {
 
     this.state = {
 
+
     }
   }
 
@@ -43,6 +44,14 @@ class Card extends Component {
     this.props.deleteCard(card);
   }
 
+  handleEditCard(event){
+    event.preventDefault();
+
+    let card = {
+      id: this.props.id
+    }
+  }
+
 
   render(){
     return (
@@ -64,12 +73,16 @@ class Card extends Component {
           Priority: { this.props.priority }
         </div>
         <br />
-        <form onSubmit={this.makeProgress.bind(this)}>
-           <input type="submit" value={ this.props.nextStatusPhrase }/>
-        </form>
-        <form onSubmit={this.backToPrevious.bind(this)}>
-           <input type="submit" value={ this.props.prevStatusPhrase }/>
-        </form>
+        <div className="progress-button">
+          <form onSubmit={this.makeProgress.bind(this)}>
+             <input type="submit" value={ this.props.nextStatusPhrase }/>
+          </form>
+        </div>
+        <div className="regress-button">
+          <form onSubmit={this.backToPrevious.bind(this)}>
+             <input type="submit" value={ this.props.prevStatusPhrase }/>
+          </form>
+        </div>
       </div>
     )
   }
