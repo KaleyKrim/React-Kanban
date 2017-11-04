@@ -13,6 +13,10 @@ body {
   font-size: 90%;
 }
 
+.delete-button{
+  float: right;
+}
+
 #main-board{
   display: flex;
   justify-content: space-around;
@@ -23,6 +27,7 @@ body {
   border: black 1px solid;
   padding: 2%;
   width: 350px;
+  min-height: 600px;
 }
 
 #to-do .card_1, #to-do .card_2, #to-do .card_3{
@@ -45,6 +50,7 @@ body {
 .card_1, .card_2, .card_3 {
   padding: 2%;
   margin: 5%;
+  max-height: 200px;
 }
 
 /* Safari 4.0 - 8.0 */

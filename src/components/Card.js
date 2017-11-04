@@ -47,9 +47,11 @@ class Card extends Component {
   render(){
     return (
       <div className={ 'card_' + this.props.priority_id }>
-        <form onSubmit={this.handleDeleteCard.bind(this)}>
-           <input type="Submit" value="X" />
-        </form>
+        <div className="delete-button">
+          <form onSubmit={this.handleDeleteCard.bind(this)}>
+             <input type="Submit" value="X" />
+          </form>
+        </div>
         <div className="card-title">
           <br />
           { this.props.title }
