@@ -17,6 +17,10 @@ body {
   float: right;
 }
 
+.edit-button{
+  float: left;
+}
+
 #main-board{
   display: flex;
   justify-content: space-around;
@@ -55,10 +59,14 @@ body {
   margin-top: 5%;
 }
 
+.card-content{
+  min-height: 120px;
+}
+
 .card_1, .card_2, .card_3 {
   padding: 2%;
   margin: 5%;
-  min-height: 155px;
+  min-height: 170px;
 }
 
 /* Safari 4.0 - 8.0 */

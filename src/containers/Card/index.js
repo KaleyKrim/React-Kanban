@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import CardDetails from '../../components/CardDetails.js';
+import EditForm from '../../components/EditForm.js';
+
 import { editCard, deleteCard } from '../../actions/cards.js';
 
 class Card extends Component {
@@ -9,10 +12,10 @@ class Card extends Component {
     super(props);
 
     this.state = {
-
-
+      showEdit: false
     }
   }
+
 
   makeProgress(event){
 
@@ -52,27 +55,39 @@ class Card extends Component {
     }
   }
 
+  toggleEdit(event){
+    event.preventDefault();
+
+    if(this.state.showEdit === false){
+      this.setState({
+        showEdit: true
+      })
+    }else{
+      this.setState({
+        showEdit: false
+      })
+    }
+
+  }
+
 
   render(){
     return (
       <div className={ 'card_' + this.props.priority_id }>
+
+        <div className="edit-button">
+          <input type="Submit" value="Edit" onClick={this.toggleEdit.bind(this)}/>
+        </div>
+
         <div className="delete-button">
           <form onSubmit={this.handleDeleteCard.bind(this)}>
              <input type="Submit" value="X" />
           </form>
         </div>
-        <div className="card-title">
-          <br />
-          { this.props.title }
-        </div>
 
-        <div className="card-details">
-          <br />
-          Assigned to: { this.props.assigned_to }
-          <br />
-          Priority: { this.props.priority }
-        </div>
-        <br />
+        { this.state.showEdit ? <EditForm /> : null }
+        { this.state.showEdit ? null : <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/> }
+
         <div className="progress-button">
           <form onSubmit={this.makeProgress.bind(this)}>
              <input type="submit" value={ this.props.nextStatusPhrase }/>
