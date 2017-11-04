@@ -16,15 +16,15 @@ body {
   width: 300px;
 }
 
-#to-do .card{
+#to-do .card_1, #to-do .card_2, #to-do .card_3{
   background-color: #ffb3ec;
 }
 
-#doing .card{
+#doing .card_1, #doing .card_2, #doing .card_3{
   background-color: #ccb3ff;
 }
 
-#done .card{
+#done .card_1, #done .card_2, #done .card_3{
   background-color: #b3b3ff;
 }
 
@@ -33,7 +33,30 @@ body {
   margin-top: 5%;
 }
 
-.card{
+.card_1, .card_2, .card_3 {
   padding: 2%;
   margin: 5%;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes flashColors {
+  0% {background-color: #ccb3ff;}
+  50% {background-color: #884dff;}
+  100% {background-color: #ccb3ff;}
+}
+
+/* Standard syntax */
+@keyframes flashColors {
+  0% {background-color: #ccb3ff;}
+  50% {background-color: #884dff;}
+  100% {background-color: #ccb3ff;}
+}
+
+#doing .card_1 {
+  -webkit-animation-name: flashColors; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+  animation-name: flashColors;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }

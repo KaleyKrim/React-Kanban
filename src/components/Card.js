@@ -9,6 +9,7 @@ class Card extends Component {
     super(props);
 
     this.state = {
+      classNames: 'card_' + this.props.priority_id
     }
   }
 
@@ -44,7 +45,7 @@ class Card extends Component {
 
   render(){
     return (
-      <div className="card">
+      <div className={ this.state.classNames }>
         <br />
         { this.props.title }
         <br />
