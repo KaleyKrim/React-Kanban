@@ -30,7 +30,6 @@ class App extends Component {
 
 
   componentDidMount(){
-    console.log('componentMounted');
 
     this.props.loadCards();
 

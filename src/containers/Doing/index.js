@@ -43,7 +43,17 @@ class Doing extends Component {
             return card.status === 2
           }).map((card) => {
             return(
-              <Card id={card.id} title={card.title} assigned_to={this.findAssignedTo(card)} priority_id={card.priority} priority={this.findPriority(card)} prevStatus = {1} prevStatusPhrase={"I'll do this later"} nextStatus={3} nextStatusPhrase={"Finished!"}/>
+              <Card
+                id={card.id}
+                title={card.title}
+                assigned_to={this.findAssignedTo(card)}
+                priority_id={card.priority}
+                priority={this.findPriority(card)}
+                prevStatus = {1}
+                prevStatusPhrase={"I'll do this later"}
+                nextStatus={3}
+                nextStatusPhrase={"Finished!"}
+              />
             );
           })
         }

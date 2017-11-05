@@ -16,6 +16,16 @@ class Card extends Component {
       priority: '',
       assignedTo: ''
     }
+
+    this.makeProgress = this.makeProgress.bind(this);
+    this.backToPrevious = this.backToPrevious.bind(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangePriority = this.handleChangePriority.bind(this);
+    this.handleChangeAssigned = this.handleChangeAssigned.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleDeleteCard = this.handleDeleteCard.bind(this);
+
   }
 
 
@@ -37,16 +47,6 @@ class Card extends Component {
       status: this.props.prevStatus
     };
     this.props.editCard(newInfo);
-  }
-
-  handleDeleteCard(event){
-    event.preventDefault();
-
-    let card = {
-      id: this.props.id
-    }
-
-    this.props.deleteCard(card);
   }
 
   handleChangeTitle(event){
@@ -85,6 +85,16 @@ class Card extends Component {
     })
   }
 
+  handleDeleteCard(event){
+    event.preventDefault();
+
+    let card = {
+      id: this.props.id
+    }
+
+    this.props.deleteCard(card);
+  }
+
   toggleEdit(event){
     event.preventDefault();
 
@@ -106,11 +116,11 @@ class Card extends Component {
       <div className={ 'card_' + this.props.priority_id }>
 
         <div className="edit-button">
-          <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit.bind(this)}/>
+          <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit}/>
         </div>
 
         <div className="delete-button">
-          <form onSubmit={this.handleDeleteCard.bind(this)}>
+          <form onSubmit={this.handleDeleteCard}>
              <input type="Submit" class="button" value="X" />
           </form>
         </div>
@@ -121,15 +131,15 @@ class Card extends Component {
             <div className="edit-form">
               <br />
               <br />
-              <form onSubmit={this.handleSubmit.bind(this)}>
-                <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle.bind(this)}/>
-                <select name="priority" onChange={this.handleChangePriority.bind(this)}>
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle}/>
+                <select name="priority" onChange={this.handleChangePriority}>
                   <option value="1">High</option>
                   <option value="2">Medium</option>
                   <option value="3">Low</option>
                 </select>
 
-                <select name="user" onChange={this.handleChangeAssigned.bind(this)}>
+                <select name="user" onChange={this.handleChangeAssigned}>
                   {
                     this.props.users.map((user) => {
                       return(
@@ -149,12 +159,12 @@ class Card extends Component {
               <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/>
 
               <div className="progress-button">
-                <form onSubmit={this.makeProgress.bind(this)}>
+                <form onSubmit={this.makeProgress}>
                    <input type="submit" class="button" value={ this.props.nextStatusPhrase }/>
                 </form>
               </div>
               <div className="regress-button">
-                <form onSubmit={this.backToPrevious.bind(this)}>
+                <form onSubmit={this.backToPrevious}>
                    <input type="submit" class="button" value={ this.props.prevStatusPhrase }/>
                 </form>
               </div>

@@ -13,6 +13,11 @@ class NewCardForm extends Component {
       priority: '',
       assignedTo: ''
     }
+
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangePriority = this.handleChangePriority.bind(this);
+    this.handleChangeAssigned = this.handleChangeAssigned.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeTitle(event){
@@ -56,16 +61,17 @@ class NewCardForm extends Component {
           Add New Task
         </h2>
 
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle.bind(this)}/>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle}/>
 
-          <select name="priority" onChange={this.handleChangePriority.bind(this)}>
+          <select name="priority" onChange={this.handleChangePriority}>
             <option value="1">High</option>
             <option value="2">Medium</option>
             <option value="3">Low</option>
           </select>
 
-          <select name="user" onChange={this.handleChangeAssigned.bind(this)}>
+
+          <select name="user" onChange={this.handleChangeAssigned}>
             {
               this.props.users.map((user) => {
                 return(
@@ -75,7 +81,7 @@ class NewCardForm extends Component {
             }
           </select>
 
-          <input type="submit" value="Add Task"/>
+          <input type="submit" class="button" value="Add Task"/>
         </form>
       </div>
     )

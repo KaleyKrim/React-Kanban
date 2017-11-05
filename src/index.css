@@ -61,12 +61,15 @@ body {
 .button{
   border: black solid 1px;
   background-color: white;
+  color: black;
   margin: 1%;
   font-size: 90%;
 }
 
 .button:hover{
-  color: #FF0080;
+  color: white;
+  background-color: black;
+  cursor: pointer;
 }
 
 .delete-button .button{
@@ -76,7 +79,9 @@ body {
 }
 
 .delete-button .button:hover{
-  color: black;
+  color: white;
+  background-color: #FF0080;
+  border: #FF0080 solid 1px;
 }
 
 #new-card-form{
