@@ -11,13 +11,15 @@ class NewCardForm extends Component {
     this.state = {
       title: '',
       priority: '',
-      assignedTo: ''
+      assignedTo: '',
+      showCardForm: false
     }
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangePriority = this.handleChangePriority.bind(this);
     this.handleChangeAssigned = this.handleChangeAssigned.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleCardForm = this.toggleCardForm.bind(this);
   }
 
   handleChangeTitle(event){
@@ -54,35 +56,60 @@ class NewCardForm extends Component {
     })
   }
 
+  toggleCardForm(event){
+    event.preventDefault();
+
+    if(!this.state.showCardForm){
+      this.setState({
+        title: '',
+        priority: '',
+        assignedTo: '',
+        showCardForm: true
+      })
+    }else{
+      this.setState({
+        title: '',
+        priority: '',
+        assignedTo: '',
+        showCardForm: false
+      })
+    }
+  }
+
   render(){
     return (
       <div id="new-card-form">
-        <h2>
-          Add New Task
-        </h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle}/>
+        <div className="add-button">
+          <input type="Submit" value="New Task" class="button" onClick={this.toggleCardForm}/>
+        </div>
 
-          <select name="priority" onChange={this.handleChangePriority}>
-            <option value="1">High</option>
-            <option value="2">Medium</option>
-            <option value="3">Low</option>
-          </select>
+        { this.state.showCardForm ?
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle}/>
+
+            <select name="priority" onChange={this.handleChangePriority}>
+              <option value="1">High</option>
+              <option value="2">Medium</option>
+              <option value="3">Low</option>
+            </select>
 
 
-          <select name="user" onChange={this.handleChangeAssigned}>
-            {
-              this.props.users.map((user) => {
-                return(
-                  <option value={user.id}> {user.name} </option>
-                );
-              })
-            }
-          </select>
+            <select name="user" onChange={this.handleChangeAssigned}>
+              {
+                this.props.users.map((user) => {
+                  return(
+                    <option value={user.id}> {user.name} </option>
+                  );
+                })
+              }
+            </select>
 
-          <input type="submit" class="button" value="Add Task"/>
-        </form>
+            <input type="submit" class="button" value="Add Task"/>
+          </form>
+        </div>
+        : null }
       </div>
     )
   }
