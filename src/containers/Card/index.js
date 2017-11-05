@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CardDetails from '../../components/CardDetails.js';
-import EditForm from '../EditForm';
 
 import { editCard, deleteCard } from '../../actions/cards.js';
 
@@ -12,7 +11,10 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      showEdit: false
+      showEdit: false,
+      title: '',
+      priority: '',
+      assignedTo: ''
     }
   }
 
@@ -47,12 +49,40 @@ class Card extends Component {
     this.props.deleteCard(card);
   }
 
-  handleEditCard(event){
+  handleChangeTitle(event){
+    this.setState({
+      title: event.target.value
+    })
+  }
+
+  handleChangePriority(event){
+    this.setState({
+      priority: event.target.value
+    })
+  }
+
+  handleChangeAssigned(event){
+    this.setState({
+      assignedTo: event.target.value
+    })
+  }
+
+  handleSubmit(event){
     event.preventDefault();
 
-    let card = {
-      id: this.props.id
-    }
+    let newInfo = {
+      id: this.props.id,
+      title: this.state.title || this.props.title,
+      priority: this.state.priority || 1,
+      assignedTo: this.state.assignedTo || 1
+    };
+
+    this.props.editCard(newInfo);
+
+    this.setState({
+      showEdit: false,
+      title: ''
+    })
   }
 
   toggleEdit(event){
@@ -86,19 +116,48 @@ class Card extends Component {
         </div>
 
         <div className="card-content">
-          { this.state.showEdit ? <EditForm id={this.props.id} title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority} /> : null }
-          { this.state.showEdit ? null : <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/> }
-        </div>
 
-        <div className="progress-button">
-          <form onSubmit={this.makeProgress.bind(this)}>
-             <input type="submit" value={ this.props.nextStatusPhrase }/>
-          </form>
-        </div>
-        <div className="regress-button">
-          <form onSubmit={this.backToPrevious.bind(this)}>
-             <input type="submit" value={ this.props.prevStatusPhrase }/>
-          </form>
+          { this.state.showEdit ?
+            <div className="edit-form">
+              <form onSubmit={this.handleSubmit.bind(this)}>
+                <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle.bind(this)}/>
+                <select name="priority" onChange={this.handleChangePriority.bind(this)}>
+                  <option value="1">High</option>
+                  <option value="2">Medium</option>
+                  <option value="3">Low</option>
+                </select>
+
+                <select name="user" onChange={this.handleChangeAssigned.bind(this)}>
+                  {
+                    this.props.users.map((user) => {
+                      return(
+                        <option value={user.id}> {user.name} </option>
+                      );
+                    })
+                  }
+                </select>
+                <input type="submit" value="Edit Task"/>
+              </form>
+          </div>
+        : null }
+
+
+          { this.state.showEdit ? null :
+            <div>
+              <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/>
+
+              <div className="progress-button">
+                <form onSubmit={this.makeProgress.bind(this)}>
+                   <input type="submit" value={ this.props.nextStatusPhrase }/>
+                </form>
+              </div>
+              <div className="regress-button">
+                <form onSubmit={this.backToPrevious.bind(this)}>
+                   <input type="submit" value={ this.props.prevStatusPhrase }/>
+                </form>
+              </div>
+            </div>
+          }
         </div>
       </div>
     )
@@ -107,7 +166,8 @@ class Card extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards
+    cards: state.cards,
+    users: state.users
   }
 }
 

@@ -21,6 +21,10 @@ body {
   float: left;
 }
 
+.edit-form{
+  display: inline-block;
+}
+
 #main-board{
   display: flex;
   justify-content: space-around;
