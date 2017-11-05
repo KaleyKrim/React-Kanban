@@ -106,12 +106,12 @@ class Card extends Component {
       <div className={ 'card_' + this.props.priority_id }>
 
         <div className="edit-button">
-          <input type="Submit" value="Edit" onClick={this.toggleEdit.bind(this)}/>
+          <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit.bind(this)}/>
         </div>
 
         <div className="delete-button">
           <form onSubmit={this.handleDeleteCard.bind(this)}>
-             <input type="Submit" value="X" />
+             <input type="Submit" class="button" value="X" />
           </form>
         </div>
 
@@ -119,6 +119,8 @@ class Card extends Component {
 
           { this.state.showEdit ?
             <div className="edit-form">
+              <br />
+              <br />
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle.bind(this)}/>
                 <select name="priority" onChange={this.handleChangePriority.bind(this)}>
@@ -136,7 +138,7 @@ class Card extends Component {
                     })
                   }
                 </select>
-                <input type="submit" value="Edit Task"/>
+                <input type="submit" class="button" value="Edit Task"/>
               </form>
           </div>
         : null }
@@ -148,12 +150,12 @@ class Card extends Component {
 
               <div className="progress-button">
                 <form onSubmit={this.makeProgress.bind(this)}>
-                   <input type="submit" value={ this.props.nextStatusPhrase }/>
+                   <input type="submit" class="button" value={ this.props.nextStatusPhrase }/>
                 </form>
               </div>
               <div className="regress-button">
                 <form onSubmit={this.backToPrevious.bind(this)}>
-                   <input type="submit" value={ this.props.prevStatusPhrase }/>
+                   <input type="submit" class="button" value={ this.props.prevStatusPhrase }/>
                 </form>
               </div>
             </div>

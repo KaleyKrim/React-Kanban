@@ -58,6 +58,26 @@ body {
   background-color: #b3b3ff;
 }
 
+.button{
+  border: black solid 1px;
+  background-color: white;
+  margin: 1%;
+  font-size: 90%;
+}
+
+.button:hover{
+  color: #FF0080;
+}
+
+.delete-button .button{
+  color: #FF0080;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.delete-button .button:hover{
+  color: black;
+}
 
 #new-card-form{
   margin-top: 5%;
