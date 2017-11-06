@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { addCard } from '../../actions/cards.js';
 
+import Select from '../../components/Select';
+
 class NewCardForm extends Component {
 
   constructor(props){
@@ -81,32 +83,16 @@ class NewCardForm extends Component {
       <div id="new-card-form">
 
         <div className="add-button">
-          <input type="Submit" value="New Task" class="button" onClick={this.toggleCardForm}/>
+          <input type="Submit" value="Add Tasks" class="button" onClick={this.toggleCardForm}/>
         </div>
 
         { this.state.showCardForm ?
         <div>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.title} placeholder="title" onChange={this.handleChangeTitle}/>
-
-            <select name="priority" onChange={this.handleChangePriority}>
-              <option value="1">High</option>
-              <option value="2">Medium</option>
-              <option value="3">Low</option>
-            </select>
-
-
-            <select name="user" onChange={this.handleChangeAssigned}>
-              {
-                this.props.users.map((user) => {
-                  return(
-                    <option value={user.id}> {user.name} </option>
-                  );
-                })
-              }
-            </select>
-
-            <input type="submit" class="button" value="Add Task"/>
+            <input type="text" value={this.state.title} placeholder="Task description" onChange={this.handleChangeTitle}/>
+            <Select name="user" label="Assign to" handler={this.handleChangeAssigned} list={this.props.users} show="name"/>
+            <Select name="priority" label="Priority" handler={this.handleChangePriority} list={this.props.priorities} show="title"/>
+            <input type="submit" class="button" value="Add to 'To Do'"/>
           </form>
         </div>
         : null }
@@ -117,7 +103,8 @@ class NewCardForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users
+    users: state.users,
+    priorities: state.priorities
   }
 }
 

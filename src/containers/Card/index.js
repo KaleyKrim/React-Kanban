@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CardDetails from '../../components/CardDetails.js';
+import Select from '../../components/Select';
 
 import { editCard, deleteCard } from '../../actions/cards.js';
 
@@ -98,7 +99,7 @@ class Card extends Component {
   toggleEdit(event){
     event.preventDefault();
 
-    if(this.state.showEdit === false){
+    if(!this.state.showEdit){
       this.setState({
         showEdit: true
       })
@@ -121,7 +122,7 @@ class Card extends Component {
 
         <div className="delete-button">
           <form onSubmit={this.handleDeleteCard}>
-             <input type="Submit" class="button" value="X" />
+             <input type="Submit" class="button" value="x" />
           </form>
         </div>
 
@@ -133,22 +134,9 @@ class Card extends Component {
               <br />
               <form onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle}/>
-                <select name="priority" onChange={this.handleChangePriority}>
-                  <option value="1">High</option>
-                  <option value="2">Medium</option>
-                  <option value="3">Low</option>
-                </select>
-
-                <select name="user" onChange={this.handleChangeAssigned}>
-                  {
-                    this.props.users.map((user) => {
-                      return(
-                        <option value={user.id}> {user.name} </option>
-                      );
-                    })
-                  }
-                </select>
-                <input type="submit" class="button" value="Edit Task"/>
+                <Select name="user" label="Assign to" handler={this.handleChangeAssigned} list={this.props.users} show="name"/>
+                <Select name="priority" label="Priority" handler={this.handleChangePriority} list={this.props.priorities} show="title"/>
+                <input type="submit" class="button" value="OK!"/>
               </form>
           </div>
         : null }
@@ -179,7 +167,8 @@ class Card extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.cards,
-    users: state.users
+    users: state.users,
+    priorities: state.priorities
   }
 }
 
