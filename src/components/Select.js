@@ -2,7 +2,7 @@ import React from 'react';
 
 const Select = (props) => {
   return (
-      <select name={props.name} onChange={props.handler}>
+      <select className="select" name={props.name} onChange={props.handler}>
         {
           props.list.map((item) => {
             return(
