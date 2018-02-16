@@ -7,6 +7,19 @@ body {
 
 h2 {
   font-family: 'Spectral SC', serif;
+  line-height: 1px;
+}
+
+.card-lower-half{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content{
+  height: 100%;
+  width: 100%;
 }
 
 #header{
@@ -53,11 +66,12 @@ h2 {
 }
 
 .card-column {
-  border: black 1px solid;
+  border: black 2px solid;
   padding: 2%;
   width: 350px;
   min-height: 100%;
   background-color: #f2d9e6;
+  box-shadow: 10px 10px 8px #888888;
 }
 
 .card-title{
@@ -65,7 +79,7 @@ h2 {
 }
 
 .card-details{
-  font-size: 90%;
+  font-size: 80%;
   display: flex;
   justify-content: space-around;
 }
@@ -77,14 +91,24 @@ h2 {
 .card-box{
   padding: 2%;
   margin: 5%;
-  height: 205px;
+  min-height: 190px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-between
 }
 
 .points{
   font-size: 80%;
+  width: 100px;
   display: flex;
-  float: right;
+  flex-direction: column;
+  align-self: flex-end;
 }
 
 .progress-button{
@@ -123,18 +147,18 @@ h2 {
 }
 
 .edit-form{
-  display: inline;
+  display: flex;
 }
 
 .img-box{
   height: 150px;
   width: 150px;
-  object-fit: contain;
 }
 
 .img{
   height: 100%;
   width: 100%;
+  object-fit: contain;
 }
 
 .vote-buttons{
@@ -177,8 +201,4 @@ h2 {
   color: white;
   background-color: #ff3300;
   border: #ff3300 solid 1px;
-}
-
-.card-content{
-  min-height: 120px;
 }

@@ -111,14 +111,16 @@ class Card extends Component {
   render(){
     return (
       <div className="card-box">
-        <div className="edit-button">
-          <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit}/>
-        </div>
+        <div className="top-buttons">
+          <div className="edit-button">
+            <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit}/>
+          </div>
 
-        <div className="delete-button">
-          <form onSubmit={this.handleDeleteCard}>
-             <input type="Submit" class="button" value="x" />
-          </form>
+          <div className="delete-button">
+            <form onSubmit={this.handleDeleteCard}>
+               <input type="Submit" class="button" value="x" />
+            </form>
+          </div>
         </div>
 
         <div className="card-content">
@@ -128,38 +130,42 @@ class Card extends Component {
               <br />
               <br />
               <form onSubmit={this.handleSubmit}>
-                <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle}/>
+
+                <textarea
+                  cols="30"
+                  rows="5"
+                  id=""
+                  value={this.state.title}
+                  placeholder={this.props.title}
+                  onChange={this.handleChangeTitle}
+                />
                 <input type="submit" class="button" value="OK!"/>
               </form>
           </div>
-        : null }
+        : <div className="card-lower-half">
+            <CardDetails
+              title={this.props.title}
+              image={this.props.image}
+              />
 
 
-          { this.state.showEdit ? null :
-            <div>
-              <CardDetails
-                title={this.props.title}
-                image={this.props.image}
-                />
-
-
-              <div className="vote-buttons">
-                <div className="regress-button">
-                  <form onSubmit={this.downVote}>
-                     <input type="submit" class="button" value="Boring."/>
-                  </form>
-                </div>
-                <div className="progress-button">
-                  <form onSubmit={this.upVote}>
-                     <input type="submit" class="button" value="Good idea!"/>
-                  </form>
-                </div>
+            <div className="vote-buttons">
+              <div className="regress-button">
+                <form onSubmit={this.downVote}>
+                   <input type="submit" class="button" value="Boring."/>
+                </form>
               </div>
-              <div className="points">
-                { this.props.points} point{this.props.points === 1 || this.props.points === -1 ? null : "s" }
+              <div className="progress-button">
+                <form onSubmit={this.upVote}>
+                   <input type="submit" class="button" value="Good idea!"/>
+                </form>
               </div>
             </div>
-          }
+          </div> }
+
+        </div>
+        <div className="points">
+          { this.props.points} point{this.props.points === 1 || this.props.points === -1 ? null : "s" }
         </div>
       </div>
     )
