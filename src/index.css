@@ -33,8 +33,14 @@ h2 {
 .card-box{
   padding: 2%;
   margin: 5%;
-  min-height: 170px;
+  height: 205px;
   background-color: white;
+}
+
+.points{
+  font-size: 80%;
+  display: flex;
+  float: right;
 }
 
 .progress-button{

@@ -155,6 +155,9 @@ class Card extends Component {
                   </form>
                 </div>
               </div>
+              <div className="points">
+                { this.props.points} point{this.props.points === 1 || this.props.points === -1 ? null : "s" }
+              </div>
             </div>
           }
         </div>

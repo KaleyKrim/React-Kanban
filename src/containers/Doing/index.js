@@ -47,6 +47,7 @@ class Doing extends Component {
                 id={card.id}
                 title={card.title}
                 image={card.photo_url}
+                points={card.points}
               />
             );
           })
