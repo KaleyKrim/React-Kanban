@@ -18,11 +18,9 @@ class Card extends Component {
       assignedTo: ''
     }
 
-    this.makeProgress = this.makeProgress.bind(this);
-    this.backToPrevious = this.backToPrevious.bind(this);
+    this.upVote = this.upVote.bind(this);
+    this.downVote = this.downVote.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangePriority = this.handleChangePriority.bind(this);
-    this.handleChangeAssigned = this.handleChangeAssigned.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.handleDeleteCard = this.handleDeleteCard.bind(this);
@@ -30,8 +28,8 @@ class Card extends Component {
   }
 
 
-  makeProgress(event){
-
+  upVote(event){
+    console.log(this.props);
     event.preventDefault();
     let card = {
       id: this.props.id
@@ -39,7 +37,7 @@ class Card extends Component {
     this.props.upVoteCard(card);
   }
 
-  backToPrevious(event){
+  downVote(event){
 
     event.preventDefault();
     let card = {
@@ -132,8 +130,6 @@ class Card extends Component {
               <br />
               <form onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.title} placeholder={this.props.title} onChange={this.handleChangeTitle}/>
-                <Select name="user" label="Assign to" handler={this.handleChangeAssigned} list={this.props.users} show="name"/>
-                <Select name="priority" label="Priority" handler={this.handleChangePriority} list={this.props.priorities} show="title"/>
                 <input type="submit" class="button" value="OK!"/>
               </form>
           </div>
@@ -142,16 +138,16 @@ class Card extends Component {
 
           { this.state.showEdit ? null :
             <div>
-              <CardDetails title={this.props.title} assigned_to={this.props.assigned_to} priority={this.props.priority}/>
+              <CardDetails title={this.props.title} />
 
               <div className="progress-button">
-                <form onSubmit={this.makeProgress}>
-                   <input type="submit" class="button" value={ this.props.nextStatusPhrase }/>
+                <form onSubmit={this.upVote}>
+                   <input type="submit" class="button" value="Good idea!"/>
                 </form>
               </div>
               <div className="regress-button">
-                <form onSubmit={this.backToPrevious}>
-                   <input type="submit" class="button" value={ this.props.prevStatusPhrase }/>
+                <form onSubmit={this.downVote}>
+                   <input type="submit" class="button" value="Not good."/>
                 </form>
               </div>
             </div>

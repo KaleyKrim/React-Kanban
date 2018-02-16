@@ -31,15 +31,12 @@ router.put('/:id', (req, res) => {
 
 router.put('/:id/downvote', (req, res) => {
   let cardId = req.params.id;
-  console.log('hello?')
 
   return Card.findById(cardId)
   .then(card => {
-    console.log(card.points);
-    console.log('heloooo????');
-    if(card.points === 0){
+    if((card.points === 0) || ((card.points < 0) && (card.status != 1))){
       return card.update({
-        points : (card.points)--,
+        points : Number(card.points) - 1,
         status : 1
       }, {
         returning: true,
@@ -48,9 +45,9 @@ router.put('/:id/downvote', (req, res) => {
       .then(card => {
         return res.json(card);
       })
-    }else if(card.points === 10){
+    }else if(card.points === 10 || (card.points < 10 && card.points > 1) && (card.status != 2)){
       return card.update({
-        points : (card.points)--,
+        points : Number(card.points) - 1,
         status : 2
       }, {
         returning: true,
@@ -61,7 +58,7 @@ router.put('/:id/downvote', (req, res) => {
       })
     }else{
       return card.update({
-        points : (card.points)--
+        points : Number(card.points) - 1
       }, {
         returning: true,
         plain: true
@@ -79,9 +76,9 @@ router.put('/:id/upvote', (req, res) => {
 
   return Card.findById(cardId)
   .then(card => {
-    if(card.points === (-1)){
+    if((card.points === (-1)) || (((card.points > -1 && card.points < 8) && card.status != 2))){
       return card.update({
-        points : (card.points)++,
+        points : Number(card.points) + 1,
         status : 2
       }, {
         returning: true,
@@ -90,9 +87,9 @@ router.put('/:id/upvote', (req, res) => {
       .then(card => {
         return res.json(card);
       })
-    }else if(card.points === 9){
+    }else if(card.points === 9 || (card.points > 9 && card.status != 3)){
       return card.update({
-        points : (card.points)++,
+        points : Number(card.points) + 1,
         status : 3
       }, {
         returning: true,
@@ -103,7 +100,7 @@ router.put('/:id/upvote', (req, res) => {
       })
     }else{
       return card.update({
-        points : (card.points)++
+        points : Number(card.points) + 1
       }, {
         returning: true,
         plain: true

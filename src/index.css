@@ -78,14 +78,6 @@ body {
   min-height: 600px;
 }
 
-#to-do .regress-button{
-  display: none;
-}
-
-#done .progress-button{
-  display: none;
-}
-
 #to-do .card_1, #to-do .card_2, #to-do .card_3{
   background-color: #ffb3ec;
 }

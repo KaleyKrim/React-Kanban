@@ -46,10 +46,6 @@ class ToDo extends Component {
                 <Card
                   id={card.id}
                   title={card.title}
-                  prevStatus = {3}
-                  prevStatusPhrase={"Finished!"}
-                  nextStatus={2}
-                  nextStatusPhrase={"Begin Task"}
                 />
               );
             })
