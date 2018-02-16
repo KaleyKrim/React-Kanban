@@ -44,9 +44,9 @@ export const editCard = (newInfo) => {
   }
 }
 
-export const upVoteCard = (newInfo) => {
+export const upVoteCard = (card) => {
   return function(dispatch){
-    return axios.put(`/api/card/${newInfo.id}`, newInfo)
+    return axios.put(`/api/card/${card.id}/upvote`)
     .then( card => {
       dispatch({
         type: UPVOTE_CARD,
@@ -56,9 +56,9 @@ export const upVoteCard = (newInfo) => {
   }
 }
 
-export const downVoteCard = (newInfo) => {
+export const downVoteCard = (card) => {
   return function(dispatch){
-    return axios.put(`/api/card/${newInfo.id}`, newInfo)
+    return axios.put(`/api/card/${card.id}/downvote`)
     .then( card => {
       dispatch({
         type: DOWNVOTE_CARD,

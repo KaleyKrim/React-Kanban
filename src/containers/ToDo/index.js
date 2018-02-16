@@ -46,9 +46,6 @@ class ToDo extends Component {
                 <Card
                   id={card.id}
                   title={card.title}
-                  assigned_to={this.findAssignedTo(card)}
-                  priority_id={card.priority}
-                  priority={this.findPriority(card)}
                   prevStatus = {3}
                   prevStatusPhrase={"Finished!"}
                   nextStatus={2}
@@ -65,9 +62,7 @@ class ToDo extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards,
-    users: state.users,
-    priorities: state.priorities
+    cards: state.cards
   }
 }
 

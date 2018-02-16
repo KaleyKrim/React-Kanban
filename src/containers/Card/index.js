@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CardDetails from '../../components/CardDetails.js';
 import Select from '../../components/Select';
 
-import { editCard, deleteCard } from '../../actions/cards.js';
+import { editCard, upVoteCard, downVoteCard, deleteCard } from '../../actions/cards.js';
 
 class Card extends Component {
 
@@ -33,21 +33,19 @@ class Card extends Component {
   makeProgress(event){
 
     event.preventDefault();
-    let newInfo = {
-      id: this.props.id,
-      status: this.props.nextStatus
-    };
-    this.props.editCard(newInfo);
+    let card = {
+      id: this.props.id
+    }
+    this.props.upVoteCard(card);
   }
 
   backToPrevious(event){
 
     event.preventDefault();
-    let newInfo = {
-      id: this.props.id,
-      status: this.props.prevStatus
-    };
-    this.props.editCard(newInfo);
+    let card = {
+      id: this.props.id
+    }
+    this.props.downVoteCard(card);
   }
 
   handleChangeTitle(event){
@@ -166,9 +164,7 @@ class Card extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards,
-    users: state.users,
-    priorities: state.priorities
+    cards: state.cards
   }
 }
 
@@ -176,6 +172,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     editCard: (card) => {
       dispatch(editCard(card))
+    },
+    upVoteCard: (card) => {
+      dispatch(upVoteCard(card))
+    },
+    downVoteCard: (card) => {
+      dispatch(downVoteCard(card))
     },
     deleteCard: (card) => {
       dispatch(deleteCard(card))
