@@ -38,12 +38,13 @@ router.get('/cards', (req, res) => {
 
 router.post('/', upload.array('upl', 1), (req, res) => {
   let title = req.body.title;
-  let status = 1;
+  let status = 2;
 
   if(req.files[0]){
     return Card.create({
       title : title,
-      photo : req.files[0].key
+      photo : req.files[0].key,
+      status : status
     })
     .then(newCard => {
       return res.json(newCard);
@@ -53,7 +54,8 @@ router.post('/', upload.array('upl', 1), (req, res) => {
     })
   }else{
     return Card.create({
-      title : title
+      title : title,
+      status : status
     })
     .then(newCard => {
       return res.json(newCard);

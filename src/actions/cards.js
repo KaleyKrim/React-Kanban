@@ -3,6 +3,8 @@ const axios = require('axios');
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
+export const UPVOTE_CARD = 'UPVOTE_CARD';
+export const DOWNVOTE_CARD = 'DOWNVOTE_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 
 export const loadCards = () => {
@@ -36,6 +38,30 @@ export const editCard = (newInfo) => {
     .then( card => {
       dispatch({
         type: EDIT_CARD,
+        card: card.data
+      });
+    });
+  }
+}
+
+export const upVoteCard = (newInfo) => {
+  return function(dispatch){
+    return axios.put(`/api/card/${newInfo.id}`, newInfo)
+    .then( card => {
+      dispatch({
+        type: UPVOTE_CARD,
+        card: card.data
+      });
+    });
+  }
+}
+
+export const downVoteCard = (newInfo) => {
+  return function(dispatch){
+    return axios.put(`/api/card/${newInfo.id}`, newInfo)
+    .then( card => {
+      dispatch({
+        type: DOWNVOTE_CARD,
         card: card.data
       });
     });
