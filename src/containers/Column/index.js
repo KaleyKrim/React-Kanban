@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '../Card';
 
-class Doing extends Component {
+class Column extends Component {
 
   constructor(props){
     super(props);
@@ -33,14 +33,14 @@ class Doing extends Component {
 
   render(){
     return (
-      <div>
+      <div className="column">
         <h2>
-          Average Ideas
+          {this.props.headerText}
         </h2>
-        <div id="doing">
+        <div className="card-column">
         {
           this.props.cards.filter((card) => {
-            return card.status === 2
+            return card.status === this.props.status
           }).map((card) => {
             return(
               <Card
@@ -64,9 +64,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const ConnectedDoing = connect(
+const ConnectedColumn = connect(
   mapStateToProps,
   null
-)(Doing);
+)(Column);
 
-export default ConnectedDoing;
+export default ConnectedColumn;
