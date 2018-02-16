@@ -24,9 +24,6 @@ class App extends Component {
 
   componentWillMount(){
 
-    this.props.loadUsers();
-    this.props.loadPriorities();
-
   }
 
 
