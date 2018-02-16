@@ -29,21 +29,26 @@ const upload = multer({
   })
 });
 
-router.get('/cards', (req, res) => {
-  return Card.findAll()
+router.get('/', (req, res) => {
+  return Card.findAll({
+    where : {
+      deleted_at : null
+    }
+  })
   .then(cards => {
     return res.json(cards);
   })
 });
 
-router.post('/', upload.array('upl', 1), (req, res) => {
+router.post('/', upload.array('file', 1), (req, res) => {
   let title = req.body.title;
-  let status = 1;
+  let status = 2;
 
   if(req.files[0]){
     return Card.create({
       title : title,
-      photo : req.files[0].key
+      photo_url : req.files[0].location,
+      status : status
     })
     .then(newCard => {
       return res.json(newCard);
@@ -53,7 +58,8 @@ router.post('/', upload.array('upl', 1), (req, res) => {
     })
   }else{
     return Card.create({
-      title : title
+      title : title,
+      status : status
     })
     .then(newCard => {
       return res.json(newCard);
@@ -65,78 +71,6 @@ router.post('/', upload.array('upl', 1), (req, res) => {
 
 });
 
-router.get('/card/:id', (req, res) => {
-  let cardId = req.params.id;
 
-  return Card.findById(cardId)
-  .then(card => {
-    return res.json(card);
-  });
-});
-
-router.put('/card/:id', (req, res) => {
-  let newInfo = req.body;
-  let cardId = req.params.id;
-
-  return Card.findById(cardId)
-  .then(card => {
-    return card.update(newInfo, {
-      returning: true,
-      plain: true
-    })
-    .then(card => {
-      return res.json(card);
-    })
-  })
-});
-
-router.put('/card/:id/upvote', (req, res) => {
-  let cardId = req.params.id;
-
-  return Card.findById(cardId)
-  .then(card => {
-    return card.update(newInfo, {
-      returning: true,
-      plain: true
-    })
-    .then(card => {
-      return res.json(card);
-    })
-  })
-});
-
-router.put('/card/:id/downvote', (req, res) => {
-  let cardId = req.params.id;
-
-  return Card.findById(cardId)
-  .then(card => {
-    return card.update({
-      points : (card.points)++
-    }, {
-      returning: true,
-      plain: true
-    })
-    .then(card => {
-      return res.json(card);
-    })
-  })
-});
-
-router.delete('/card/:id', (req, res) => {
-  let cardId = req.params.id;
-
-  return Card.findById(cardId)
-  .then(card => {
-    return card.update({
-      deleted_at : Date.now()
-    },{
-      returning: true,
-      plain: true
-    })
-    .then(results => {
-      return res.json({ results });
-    })
-  })
-});
 
 module.exports = router;

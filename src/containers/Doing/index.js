@@ -46,13 +46,6 @@ class Doing extends Component {
               <Card
                 id={card.id}
                 title={card.title}
-                assigned_to={this.findAssignedTo(card)}
-                priority_id={card.priority}
-                priority={this.findPriority(card)}
-                prevStatus = {1}
-                prevStatusPhrase={"I'll do this later"}
-                nextStatus={3}
-                nextStatusPhrase={"Finished!"}
               />
             );
           })

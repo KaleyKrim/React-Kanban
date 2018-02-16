@@ -6,8 +6,8 @@ module.exports = {
       title: 'Study React',
       createdAt: new Date(),
       updatedAt: new Date(),
-      priority: 1,
-      status: 1
+      points: 0,
+      status: 2
     }], {});
   },
 

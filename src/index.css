@@ -42,6 +42,29 @@ body {
 
 }
 
+#uploaded-image-preview{
+  height: 100px;
+  width: 100px;
+  border: black solid 1px;
+}
+
+#image-upload-area{
+  margin-left: 3%;
+}
+
+#buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#preview{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+
+}
+
 #main-board{
   display: flex;
   justify-content: space-around;
@@ -53,14 +76,6 @@ body {
   padding: 2%;
   width: 350px;
   min-height: 600px;
-}
-
-#to-do .regress-button{
-  display: none;
-}
-
-#done .progress-button{
-  display: none;
 }
 
 #to-do .card_1, #to-do .card_2, #to-do .card_3{

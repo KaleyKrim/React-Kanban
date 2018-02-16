@@ -3,23 +3,20 @@ import { connect } from 'react-redux';
 
 import { addCard } from '../../actions/cards.js';
 
-import Select from '../../components/Select';
-
 class NewCardForm extends Component {
 
   constructor(props){
     super(props);
 
     this.state = {
-      title: '',
-      priority: '',
-      assignedTo: '',
+      title : '',
+      file : '',
+      imageURL : '',
       showCardForm: false
     }
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangePriority = this.handleChangePriority.bind(this);
-    this.handleChangeAssigned = this.handleChangeAssigned.bind(this);
+    this.handleChangeImage = this.handleChangeImage.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleCardForm = this.toggleCardForm.bind(this);
   }
@@ -30,32 +27,36 @@ class NewCardForm extends Component {
     })
   }
 
-  handleChangePriority(event){
-    this.setState({
-      priority: event.target.value
-    })
-  }
+  handleChangeImage(event){
+    event.preventDefault();
+    let reader = new FileReader();
 
-  handleChangeAssigned(event){
-    this.setState({
-      assignedTo: event.target.value
-    })
+    let file = event.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imageUrl: reader.result
+      })
+    }
+    reader.readAsDataURL(file);
   }
 
   handleSubmit(event){
     event.preventDefault();
 
-    let newCard = {
-      title: this.state.title,
-      priority: this.state.priority || 1,
-      assignedTo: this.state.assignedTo || 1
-    };
+    let formData = new FormData();
 
-    this.props.addCard(newCard);
+    formData.append('file', this.state.file);
+    formData.append('title', this.state.title);
+
+    this.props.addCard(formData);
 
     this.setState({
-      title: ''
-    })
+      title: '',
+      file: '',
+      imageURL: ''
+    });
   }
 
   toggleCardForm(event){
@@ -64,15 +65,15 @@ class NewCardForm extends Component {
     if(!this.state.showCardForm){
       this.setState({
         title: '',
-        priority: '',
-        assignedTo: '',
+        file: '',
+        imageURL: '',
         showCardForm: true
       })
     }else{
       this.setState({
         title: '',
-        priority: '',
-        assignedTo: '',
+        file: '',
+        imageURL: '',
         showCardForm: false
       })
     }
@@ -83,16 +84,22 @@ class NewCardForm extends Component {
       <div id="new-card-form">
 
         <div className="add-button">
-          <input type="Submit" value="Add Tasks" class="button" onClick={this.toggleCardForm}/>
+          <input type="Submit" value="Add Ideas" class="button" onClick={this.toggleCardForm}/>
         </div>
 
         { this.state.showCardForm ?
-        <div>
+        <div id="new-idea-form">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.title} placeholder="Task description" onChange={this.handleChangeTitle}/>
-            <Select name="user" label="Assign to" handler={this.handleChangeAssigned} list={this.props.users} show="name"/>
-            <Select name="priority" label="Priority" handler={this.handleChangePriority} list={this.props.priorities} show="title"/>
-            <input type="submit" class="button" value="Add to 'To Do'"/>
+            <div id="buttons">
+              <textarea cols="30" rows="10" id="" value={this.state.title} onChange={this.handleChangeTitle} />
+              <div id="image-upload-area">
+                <div id="uploaded-image-preview">
+                  <img id="preview" alt="preview" src={this.state.imageUrl} />
+                </div>
+                <input type="file" accept="image/*" id="image-upload" placeholder="Image" onChange={this.handleChangeImage}/>
+                </div>
+              </div>
+            <input type="submit" class="button" value="Post Idea"/>
           </form>
         </div>
         : null }
