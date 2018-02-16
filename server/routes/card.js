@@ -73,7 +73,7 @@ router.delete('/:id', (req, res) => {
       plain: true
     })
     .then(results => {
-      return res.json({ results });
+      return res.json(results);
     })
   })
 });

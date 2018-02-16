@@ -25,7 +25,7 @@ const cards = (state = initialState, action) => {
       return [ ...(state.slice(0, idx)), action.card[1], ...(state.slice((idx + 1), state.length))];
     case DELETE_CARD:
       let i = state.findIndex((card) => {
-        return card.id === parseInt(action.cardData.id, 0);
+        return card.id === parseInt(action.card.id, 0);
       });
       return [ ...(state.slice(0, i)), ...(state.slice((i + 1), state.length))];
 

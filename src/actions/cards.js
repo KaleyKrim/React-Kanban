@@ -71,10 +71,10 @@ export const downVoteCard = (newInfo) => {
 export const deleteCard = (cardToDelete) => {
   return function(dispatch){
     return axios.delete(`/api/card/${cardToDelete.id}`)
-    .then( response => {
+    .then( card => {
       dispatch({
         type: DELETE_CARD,
-        cardData: response.data
+        card: card.data
       });
     });
   }
