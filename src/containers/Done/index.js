@@ -35,7 +35,7 @@ class Done extends Component {
     return (
       <div>
         <h2>
-          Sick Ideas
+          Great Ideas
         </h2>
         <div id="done">
           {

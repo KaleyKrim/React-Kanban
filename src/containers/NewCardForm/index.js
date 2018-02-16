@@ -94,7 +94,7 @@ class NewCardForm extends Component {
         <div id="new-idea-form">
           <form onSubmit={this.handleSubmit}>
             <div id="buttons">
-              <textarea cols="30" rows="10" id="" value={this.state.title} onChange={this.handleChangeTitle} />
+              <textarea cols="30" rows="5" id="" value={this.state.title} placeholder="Describe your idea! (Image upload is optional)" onChange={this.handleChangeTitle} />
               <div id="image-upload-area">
                 <div id="uploaded-image-preview">
                   <img id="preview" alt="preview" src={this.state.imageURL === '' ? preview : this.state.imageURL } />
