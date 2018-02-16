@@ -35,7 +35,7 @@ class Doing extends Component {
     return (
       <div>
         <h2>
-          Doing
+          Average Ideas
         </h2>
         <div id="doing">
         {
@@ -46,6 +46,7 @@ class Doing extends Component {
               <Card
                 id={card.id}
                 title={card.title}
+                image={card.photo_url}
               />
             );
           })
@@ -58,9 +59,7 @@ class Doing extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.cards,
-    users: state.users,
-    priorities: state.priorities
+    cards: state.cards
   }
 }
 

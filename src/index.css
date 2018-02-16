@@ -13,6 +13,8 @@ body {
 
 .card-details{
   font-size: 90%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .delete-button{
@@ -50,6 +52,23 @@ body {
 
 #image-upload-area{
   margin-left: 3%;
+}
+
+.img-box{
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+}
+
+.vote-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.img{
+  height: 100%;
+  width: 100%;
 }
 
 #buttons{

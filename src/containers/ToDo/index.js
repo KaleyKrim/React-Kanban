@@ -35,7 +35,7 @@ class ToDo extends Component {
     return (
       <div>
         <h2>
-          To Do
+          Boring Ideas
         </h2>
          <div id="to-do">
           {
@@ -46,6 +46,7 @@ class ToDo extends Component {
                 <Card
                   id={card.id}
                   title={card.title}
+                  image={card.photo_url}
                 />
               );
             })

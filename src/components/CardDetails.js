@@ -8,13 +8,13 @@ const CardDetails = (props) => {
         { props.title }
       </div>
 
-      <div className="card-specs">
-        <br />
-        Assigned to: { props.assigned_to }
-        <br />
-        Priority: { props.priority }
-      </div>
-      <br />
+      {
+        props.image ?
+        <div className="img-box">
+          <img src={ props.image } className="img"/>
+        </div> : null
+      }
+
     </div>
   );
 }
