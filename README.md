@@ -1,7 +1,8 @@
-# React Kanban
+# Idea Board
+## An idea board SPA
 
-• A kanban board/task manager SPA built with **React.js**, **Express**, and **PostgreSQL**.
+## Link
+Test it out at http://165.227.22.200/
 
-This single-page application allows users to make "to do" cards for tasks, assign a priority (high, low, medium) to each task, and categorize it based on whether it's been completed or not ("to do", "doing", or "done").
-
-![Demo](https://github.com/KaleyKrim/React-Kanban/blob/master/demo/kanban.gif)
+## Tools:
+- Node.js, Express.js, Sequelize, PostgreSQL, React.js, AWS
