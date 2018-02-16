@@ -12,7 +12,8 @@ class NewCardForm extends Component {
       title : '',
       file : '',
       imageURL : '',
-      showCardForm: false
+      showCardForm: false,
+      buttonText: 'Add Ideas'
     }
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -67,14 +68,16 @@ class NewCardForm extends Component {
         title: '',
         file: '',
         imageURL: '',
-        showCardForm: true
+        showCardForm: true,
+        buttonText: 'Close'
       })
     }else{
       this.setState({
         title: '',
         file: '',
         imageURL: '',
-        showCardForm: false
+        showCardForm: false,
+        buttonText: 'Add Ideas'
       })
     }
   }
@@ -84,7 +87,7 @@ class NewCardForm extends Component {
       <div id="new-card-form">
 
         <div className="add-button">
-          <input type="Submit" value="Add Ideas" class="button" onClick={this.toggleCardForm}/>
+          <input type="Submit" value={this.state.buttonText} class="button" onClick={this.toggleCardForm}/>
         </div>
 
         { this.state.showCardForm ?

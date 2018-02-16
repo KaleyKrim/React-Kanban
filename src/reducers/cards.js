@@ -10,9 +10,9 @@ const cards = (state = initialState, action) => {
       return [ ...state, action.card ];
     case EDIT_CARD:
       let index = state.findIndex((card) => {
-        return card.id === action.card[1].id
+        return card.id === parseInt(action.card.id, 0);
       });
-      return [ ...(state.slice(0, index)), action.card[1], ...(state.slice((index + 1), state.length))];
+      return [ ...(state.slice(0, index)), action.card, ...(state.slice((index + 1), state.length))];
     case UPVOTE_CARD:
       let ind = state.findIndex((card) => {
         return card.id === parseInt(action.card.id, 0);

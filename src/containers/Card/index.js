@@ -110,8 +110,7 @@ class Card extends Component {
 
   render(){
     return (
-      <div className={ 'card_' + this.props.id }>
-
+      <div className="card-box">
         <div className="edit-button">
           <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit}/>
         </div>
@@ -145,14 +144,14 @@ class Card extends Component {
 
 
               <div className="vote-buttons">
+                <div className="regress-button">
+                  <form onSubmit={this.downVote}>
+                     <input type="submit" class="button" value="Boring."/>
+                  </form>
+                </div>
                 <div className="progress-button">
                   <form onSubmit={this.upVote}>
                      <input type="submit" class="button" value="Good idea!"/>
-                  </form>
-                </div>
-                <div className="regress-button">
-                  <form onSubmit={this.downVote}>
-                     <input type="submit" class="button" value="Not good."/>
                   </form>
                 </div>
               </div>

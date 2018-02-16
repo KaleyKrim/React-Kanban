@@ -3,18 +3,65 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Spectral SC', serif;
+
+}
+
+#header{
+  font-family: 'Spectral SC', serif;
 }
 
 .card-title{
-  font-size: 140%;
+  font-size: 120%;
 }
 
 .card-details{
   font-size: 90%;
   display: flex;
   justify-content: space-around;
+}
+
+.vote-buttons{
+  margin-top: 5%;
+}
+
+.card-box{
+  padding: 2%;
+  margin: 5%;
+  min-height: 170px;
+  background-color: white;
+}
+
+.progress-button{
+  margin-left: 5px;
+}
+
+.progress-button .button{
+  color: white;
+  background-color: #9999ff;
+  border: 1px solid #9999ff;
+}
+
+.progress-button .button:hover{
+  color: #9999ff;
+  background-color: white;
+  border: 1px solid #9999ff;
+}
+
+.regress-button .button{
+  background-color: #ff6666;
+  color: white;
+  border: 1px solid #ff6666;
+}
+.regress-button .button:hover{
+  background-color: white;
+  color: #ff6666;
+  border: 1px solid #ff6666;
 }
 
 .delete-button{
@@ -30,17 +77,16 @@ body {
 }
 
 .add-button .button{
-  font-size: 120%;
-  font-weight: bold;
+  font-size: 110%;
   border: black 1px solid;
-  background-color: white;
-  color: #FF0080;
+  background-color: black;
+  color: white;
 }
 
 .add-button .button:hover{
-  background-color: #FF0080;
-  border: #FF0080 1px solid;
-  color: white;
+  background-color: white;
+  border: black 1px solid;
+  color: black;
 
 }
 
@@ -94,19 +140,19 @@ body {
   border: black 1px solid;
   padding: 2%;
   width: 350px;
-  min-height: 600px;
+  min-height: 100%;
 }
 
-#to-do .card_1, #to-do .card_2, #to-do .card_3{
-  background-color: #ffb3ec;
+#doing{
+  background-color: #f2d9e6;
 }
 
-#doing .card_1, #doing .card_2, #doing .card_3{
-  background-color: #ccb3ff;
+#to-do{
+  background-color: #f8ecf2;
 }
 
-#done .card_1, #done .card_2, #done .card_3{
-  background-color: #b3b3ff;
+#done{
+  background-color: #eac8d9;
 }
 
 .button{
@@ -128,15 +174,15 @@ body {
 }
 
 .delete-button .button{
-  color: #FF0080;
+  color: #ff3300;
   font-weight: bold;
   font-size: 100%;
 }
 
 .delete-button .button:hover{
   color: white;
-  background-color: #FF0080;
-  border: #FF0080 solid 1px;
+  background-color: #ff3300;
+  border: #ff3300 solid 1px;
 }
 
 #new-card-form{
@@ -145,12 +191,6 @@ body {
 
 .card-content{
   min-height: 120px;
-}
-
-.card_1, .card_2, .card_3 {
-  padding: 2%;
-  margin: 5%;
-  min-height: 170px;
 }
 
 /* Safari 4.0 - 8.0 */
