@@ -26,6 +26,9 @@ router.put('/:id', (req, res) => {
     .then(card => {
       return res.json(card);
     })
+    .catch((err) => {
+      console.log(err);
+    });
   })
 });
 

@@ -110,8 +110,7 @@ class Card extends Component {
 
   render(){
     return (
-      <div className={ 'card_' + this.props.priority_id }>
-
+      <div className="card-box">
         <div className="edit-button">
           <input type="Submit" value="Edit" class="button" onClick={this.toggleEdit}/>
         </div>
@@ -138,17 +137,26 @@ class Card extends Component {
 
           { this.state.showEdit ? null :
             <div>
-              <CardDetails title={this.props.title} />
+              <CardDetails
+                title={this.props.title}
+                image={this.props.image}
+                />
 
-              <div className="progress-button">
-                <form onSubmit={this.upVote}>
-                   <input type="submit" class="button" value="Good idea!"/>
-                </form>
+
+              <div className="vote-buttons">
+                <div className="regress-button">
+                  <form onSubmit={this.downVote}>
+                     <input type="submit" class="button" value="Boring."/>
+                  </form>
+                </div>
+                <div className="progress-button">
+                  <form onSubmit={this.upVote}>
+                     <input type="submit" class="button" value="Good idea!"/>
+                  </form>
+                </div>
               </div>
-              <div className="regress-button">
-                <form onSubmit={this.downVote}>
-                   <input type="submit" class="button" value="Not good."/>
-                </form>
+              <div className="points">
+                { this.props.points} point{this.props.points === 1 || this.props.points === -1 ? null : "s" }
               </div>
             </div>
           }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { addCard } from '../../actions/cards.js';
+const preview = require(`../../assets/preview.png`);
 
 class NewCardForm extends Component {
 
@@ -12,7 +12,8 @@ class NewCardForm extends Component {
       title : '',
       file : '',
       imageURL : '',
-      showCardForm: false
+      showCardForm: false,
+      buttonText: 'Add Ideas'
     }
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -36,7 +37,7 @@ class NewCardForm extends Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imageUrl: reader.result
+        imageURL: reader.result
       })
     }
     reader.readAsDataURL(file);
@@ -67,14 +68,16 @@ class NewCardForm extends Component {
         title: '',
         file: '',
         imageURL: '',
-        showCardForm: true
+        showCardForm: true,
+        buttonText: 'Close'
       })
     }else{
       this.setState({
         title: '',
         file: '',
         imageURL: '',
-        showCardForm: false
+        showCardForm: false,
+        buttonText: 'Add Ideas'
       })
     }
   }
@@ -84,7 +87,7 @@ class NewCardForm extends Component {
       <div id="new-card-form">
 
         <div className="add-button">
-          <input type="Submit" value="Add Ideas" class="button" onClick={this.toggleCardForm}/>
+          <input type="Submit" value={this.state.buttonText} class="button" onClick={this.toggleCardForm}/>
         </div>
 
         { this.state.showCardForm ?
@@ -94,7 +97,7 @@ class NewCardForm extends Component {
               <textarea cols="30" rows="10" id="" value={this.state.title} onChange={this.handleChangeTitle} />
               <div id="image-upload-area">
                 <div id="uploaded-image-preview">
-                  <img id="preview" alt="preview" src={this.state.imageUrl} />
+                  <img id="preview" alt="preview" src={this.state.imageURL === '' ? preview : this.state.imageURL } />
                 </div>
                 <input type="file" accept="image/*" id="image-upload" placeholder="Image" onChange={this.handleChangeImage}/>
                 </div>
