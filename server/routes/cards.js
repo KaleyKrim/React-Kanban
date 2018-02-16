@@ -30,7 +30,11 @@ const upload = multer({
 });
 
 router.get('/', (req, res) => {
-  return Card.findAll()
+  return Card.findAll({
+    where : {
+      deleted_at : null
+    }
+  })
   .then(cards => {
     return res.json(cards);
   })
