@@ -41,7 +41,7 @@ class Column extends Component {
         {
           this.props.cards.filter((card) => {
             return card.status === this.props.status
-          }).map((card) => {
+          }).sort((a, b) => a.points > b.points ? -1 : 1).map((card) => {
             return(
               <Card
                 id={card.id}
