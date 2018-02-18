@@ -3,6 +3,9 @@
 # keys
 /server/_lib
 
+#config
+/server/config
+
 # dependencies
 /node_modules
 
