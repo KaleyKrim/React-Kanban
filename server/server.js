@@ -7,7 +7,7 @@ const routes = require('./routes');
 const port = process.env.port || 8080;
 
 app.use(bodyParser.json());
-
+app.use(express.static('build'));
 app.use('/api', routes);
 
 app.listen(port, () => {
