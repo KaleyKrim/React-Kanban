@@ -3,7 +3,7 @@ import React from 'react';
 const KanbanHeader = () => {
   return (
     <div id="header">
-      <h1>Kaley's Idea Board</h1>
+      <div id="logo"></div>
     </div>
   );
 }

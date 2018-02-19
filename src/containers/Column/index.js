@@ -34,9 +34,11 @@ class Column extends Component {
   render(){
     return (
       <div className="column">
-        <h2>
+        <div className="column-header">
           {this.props.headerText}
-        </h2>
+        </div>
+        <div className="divider">
+        </div>
         <div className="card-column">
         {
           this.props.cards.filter((card) => {

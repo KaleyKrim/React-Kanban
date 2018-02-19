@@ -7,11 +7,13 @@ html{
   width:100%;
   height: 100%;
   display: table;
+  top: 0;
 }
 
 body {
   width:100%;
   height: 100%;
+  background-color: #FEF3F1;
   display:table-cell;
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
@@ -22,8 +24,8 @@ body {
   right: 0;
   padding: 0;
   margin: 0;
+  color: #464749;
 }
-
 
 h2 {
   font-size: 90%;
@@ -35,14 +37,23 @@ h2 {
 }
 
 #header{
-  font-family: 'Megrim', cursive;
-  color: #9966ff;
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  border-bottom: #464749 1px solid;
+}
+
+#logo{
+  background: url(./assets/header.png) no-repeat;
+  background-size: 100%;
+  width: 289px;
+  height: 50px;
 }
 
 .add-button .button{
   font-size: 90%;
-  border: black 1px solid;
-  background-color: black;
+  background-color: #464749;
+  border: 1px solid #464749;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -50,9 +61,42 @@ h2 {
 }
 
 .add-button .button:hover{
-  background-color: white;
-  border: black 1px solid;
-  color: black;
+  background-color: #FA9B88;
+  border: 1px solid #FA9B88;
+  transition-duration: .5s;
+}
+
+.button{
+  background-color: #464749;
+  border: 1px solid #464749;
+  color: white;
+  margin: 1%;
+  font-size: 90%;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: lighter;
+}
+
+.button:hover{
+  background-color: #5fd39f;
+  border: 1px solid #5fd39f;
+  transition-duration: .5s;
+  cursor: pointer;
+}
+
+.column-header{
+  font-family: 'Satisfy', cursive;
+  font-size: 170%;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+.divider{
+  width: 100px;
+  padding-top: 3px;
+  height: 1px;
+  background-color: #5fd39f;
+  margin: auto;
 }
 
 #new-card-form{
@@ -77,18 +121,15 @@ h2 {
 
 #main-board{
   display: flex;
+  width: 70%;
   justify-content: space-around;
-  margin: 1%;
+  margin: auto;
 }
 
 .card-column {
-  border: black 2px solid;
   padding: 2%;
   width: 350px;
   min-height: 100%;
-  background-color: black;
-  box-shadow: 4px 4px 8px #888888;
-  border-radius: 5px;
 }
 
 .card-lower-half{
@@ -121,6 +162,8 @@ h2 {
   padding: 2%;
   margin: 5%;
   min-height: 190px;
+  box-shadow: 4px 4px 8px #888888;
+  border-radius: 5px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -146,25 +189,26 @@ h2 {
 
 .progress-button .button{
   color: white;
-  background-color: #9999ff;
-  border: 1px solid #9999ff;
+  background-color: #5fd3cf;
+  border: 1px solid #5fd3cf;
 }
 
 .progress-button .button:hover{
-  color: #9999ff;
-  background-color: white;
-  border: 1px solid #9999ff;
+  background-color: #9aede8;
+  border: 1px solid #9aede8;
+  transition-duration: .3s;
 }
 
 .regress-button .button{
-  background-color: #ff6666;
+  background-color: #ff0070;
   color: white;
-  border: 1px solid #ff6666;
+  border: 1px solid #ff0070;
 }
 .regress-button .button:hover{
-  background-color: white;
-  color: #ff6666;
-  border: 1px solid #ff6666;
+  background-color: #ff6dac;
+  color: white;
+  border: 1px solid #ff6dac;
+  transition-duration: .3s;
 }
 
 .delete-button{
@@ -174,6 +218,19 @@ h2 {
 .edit-button{
   float: left;
 }
+
+/*.edit-button .button{
+  background-color: #A5DCC5;
+  color: white;
+  border: 1px solid #A5DCC5;
+}
+
+.edit-button .button:hover{
+  background-color: #5fd39f;
+  color: white;
+  border: 1px solid #5fd39f;
+  transition-duration: .5s;
+}*/
 
 .edit-form{
   display: flex;
@@ -203,35 +260,18 @@ h2 {
   justify-content: center;
 }
 
-.button{
-  border: black solid 1px;
-  background-color: white;
-  color: black;
-  margin: 1%;
-  font-size: 90%;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-weight: lighter;
-}
-
-.button:hover{
-  color: white;
-  background-color: black;
-  cursor: pointer;
-}
-
 .button:focus{
   outline:0;
 }
 
 .delete-button .button{
-  color: #ff3300;
   font-weight: bold;
   font-size: 100%;
 }
 
 .delete-button .button:hover{
   color: white;
-  background-color: #ff3300;
-  border: #ff3300 solid 1px;
+  background-color: #ff3242;
+  border: #ff3242 solid 1px;
+  transition-duration: .3s;
 }
